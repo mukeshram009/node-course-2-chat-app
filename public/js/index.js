@@ -5,10 +5,10 @@ socket.on('connect',function(){
   console.log('connected to the server');
 
   //emitting createEmail event as soon as connectedto the server.
-  socket.emit('createMessage',{
-    from: 'mukesh',
-    text: 'to the server'
-  });
+  // socket.emit('createMessage',{
+  //   from: 'mukesh',
+  //   text: 'to the server'
+  // });
 });
 
 socket.on('newMessage',function(email){
