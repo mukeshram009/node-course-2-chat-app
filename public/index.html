@@ -3,17 +3,31 @@
   <head>
     <meta charset="utf-8">
     <title>index page</title>
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
-  <body>
-    <p>Hai welcome to the chat app</p>
-    <p>for checking purpose</p>
-    <ol id ="messages"></ol> <!--id to be selected by jquery for modifying -->
+  <body class="chat">
 
-    <form id="message-form"><!--id to be selected by jquery for modifying -->
-      <!--input element can be selected by jquery using jQuery('[name=message]') -->
-      <input name="message" type="text" placeholder="Message" />
-      <button>send</button>
-    </form>
+    <div class="chat__sidebar">
+      <h3>people</h3>
+      <div id = "users"></div>
+    </div>
+
+    <div class="chat__main">
+      <ol id ="messages" class="chat__messages"></ol> <!--id to be selected by jquery for modifying -->
+
+      <div class="chat__footer">
+        <form id="message-form"><!--id to be selected by jquery for modifying -->
+          <!--input element can be selected by jquery using jQuery('[name=message]') -->
+          <input name="message" type="text" placeholder="Message"
+          autofocus autocomplete="off"/>
+          <button id='delete' >send</button>
+        </form>
+        <button id="send-location">send location</button>
+      </div>
+
+    </div>
+
+
 
 
 

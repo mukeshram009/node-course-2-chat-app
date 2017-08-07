@@ -3,7 +3,7 @@ const path = require('path');
 const http = require('http');//in built module in node for making http request
 const socketIO = require('socket.io');//for making easy to use websockets.
 
-const {generateMessage} = require('./utils/message');
+const {generateMessage, generateLocationMessage} = require('./utils/message');
 const publicPath = path.join(__dirname, '../public');
 const port = process.env.PORT || 3000;
 var app = express();
@@ -31,8 +31,14 @@ io.on('connection', (socket) => {//this socket ~ socket in index.html but repres
     console.log('createMessage :',message);
 //io.emit emits event to every user connected to server.
      io.emit('newMessage', generateMessage(message.from, message.text));
-     
-     callback('This is from server');//this string data is passed as arg. to the client request emitter.
+
+     callback();//this string data is passed as arg. to the client request emitter.
+  });
+
+  //listening to createLocationMessage event
+  socket.on('createLocationMessage',(coords) => {
+    io.emit('newLocationMessage',generateLocationMessage('Admin',coords.latitude, coords.longitude));
+
   });
 
   //listening to disconnect event
