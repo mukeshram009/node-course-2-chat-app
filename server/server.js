@@ -26,11 +26,13 @@ io.on('connection', (socket) => {//this socket ~ socket in index.html but repres
   socket.broadcast.emit('newMessage',generateMessage('Admin','New user joined'));
 
 
-  //listen to the event
-  socket.on('createMessage',(message) => {
+  //listen to the event, callback in 2nd arg. is for acknowledgement to the client
+  socket.on('createMessage',(message, callback) => {
     console.log('createMessage :',message);
 //io.emit emits event to every user connected to server.
      io.emit('newMessage', generateMessage(message.from, message.text));
+     
+     callback('This is from server');//this string data is passed as arg. to the client request emitter.
   });
 
   //listening to disconnect event
