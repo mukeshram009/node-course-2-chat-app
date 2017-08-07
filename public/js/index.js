@@ -6,7 +6,7 @@ socket.on('connect',function(){
 
   //emitting createEmail event as soon as connectedto the server.
   socket.emit('createMessage',{
-    from: 'mukesh',
+    from: 'you',
     text: 'Hi'}, function(data){//acknowledgement passed as 3rd arg. to emit event.
       console.log('got it:', data);
 
